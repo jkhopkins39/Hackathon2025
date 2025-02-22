@@ -1,67 +1,25 @@
+import { createNavBar } from './nav.js';
+
 export class LeaderboardManager {
     constructor() {
-        this.currentSort = 'points'; // Default sort
-        this.showFriendsOnly = false;
-        this.currentUserId = null; // Will be set when user logs in
-        this.initializeLeaderboard();
-    }
-
-    async initializeLeaderboard() {
-        // Add tab to navigation
-        this.addLeaderboardTab();
-        // Create leaderboard container
-        this.createLeaderboardUI();
-        // Initial data load
-        await this.loadLeaderboardData();
-    }
-
-    addLeaderboardTab() {
-        const nav = document.querySelector('nav ul');
-        const tab = document.createElement('li');
-        tab.innerHTML = '<a href="#leaderboard">Leaderboard</a>';
-        tab.addEventListener('click', (e) => {
-            e.preventDefault();
-            this.showLeaderboard();
-        });
-        nav.appendChild(tab);
-    }
-
-    createLeaderboardUI() {
-        const container = document.createElement('div');
-        container.id = 'leaderboard-container';
-        container.style.display = 'none';
+        // Insert navigation bar
+        document.body.insertBefore(createNavBar(), document.body.firstChild);
         
-        container.innerHTML = `
-            <div class="leaderboard-controls">
-                <div class="sort-controls">
-                    <button class="sort-btn active" data-sort="points">Sort by Points</button>
-                    <button class="sort-btn" data-sort="streak">Sort by Streak</button>
-                </div>
-                <div class="filter-controls">
-                    <button class="filter-btn" id="friends-filter">Show Friends Only</button>
-                    <button class="find-me-btn">Find Me</button>
-                </div>
-            </div>
-            <div class="leaderboard-table-container">
-                <table class="leaderboard-table">
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Profile</th>
-                            <th>Username</th>
-                            <th>Season Points</th>
-                            <th>Current Streak</th>
-                            <th>Longest Streak</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
-        `;
+        console.log('LeaderboardManager initializing...');
+        this.currentSort = 'points';
+        this.showFriendsOnly = false;
+        this.currentUserId = null;
+        
+        // Only initialize if we're on the leaderboard page
+        if (window.location.pathname.includes('leaderboard.html')) {
+            this.initializeLeaderboard();
+        }
+    }
 
-        document.querySelector('main').appendChild(container);
+    initializeLeaderboard() {
+        console.log('Loading leaderboard data...');
         this.attachEventListeners();
+        this.loadLeaderboardData();
     }
 
     attachEventListeners() {
@@ -73,35 +31,49 @@ export class LeaderboardManager {
         });
 
         // Friends filter
-        document.getElementById('friends-filter').addEventListener('click', () => {
-            this.toggleFriendsFilter();
-        });
+        const friendsFilter = document.getElementById('friends-filter');
+        if (friendsFilter) {
+            friendsFilter.addEventListener('click', () => {
+                this.toggleFriendsFilter();
+            });
+        }
 
         // Find me button
-        document.querySelector('.find-me-btn').addEventListener('click', () => {
-            this.scrollToUser();
-        });
+        const findMeBtn = document.querySelector('.find-me-btn');
+        if (findMeBtn) {
+            findMeBtn.addEventListener('click', () => {
+                this.scrollToUser();
+            });
+        }
     }
 
     async loadLeaderboardData(sortBy = 'points', friendsOnly = false) {
         try {
-            // This would be replaced with actual API call
-            const response = await fetch('/api/leaderboard', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
+            console.log('Loading leaderboard data...');
+            // Use mock data instead of fetch
+            const mockData = [
+                {
+                    id: '1',
+                    username: 'TestUser1',
+                    profilePic: 'https://via.placeholder.com/40',
+                    seasonPoints: 1000,
+                    currentStreak: 5,
+                    longestStreak: 10
                 },
-                body: JSON.stringify({
-                    sortBy,
-                    friendsOnly,
-                    userId: this.currentUserId
-                })
-            });
+                {
+                    id: '2',
+                    username: 'TestUser2',
+                    profilePic: 'https://via.placeholder.com/40',
+                    seasonPoints: 800,
+                    currentStreak: 3,
+                    longestStreak: 8
+                }
+            ];
             
-            const data = await response.json();
-            this.renderLeaderboard(data);
+            console.log('Mock data loaded successfully');
+            this.renderLeaderboard(mockData);
         } catch (error) {
-            console.error('Failed to load leaderboard data:', error);
+            console.error('Error loading leaderboard data:', error);
         }
     }
 
@@ -153,11 +125,36 @@ export class LeaderboardManager {
     }
 
     showLeaderboard() {
-        // Hide other content
+        console.log('showLeaderboard called');
+        
+        // Hide all other containers
         document.querySelectorAll('main > div').forEach(div => {
-            div.style.display = 'none';
+            if (div.id !== 'leaderboard-container') {
+                console.log('Hiding div:', div.id || 'unnamed div');
+                div.style.display = 'none';
+            }
         });
-        // Show leaderboard
-        document.getElementById('leaderboard-container').style.display = 'block';
+
+        // Show leaderboard container
+        const leaderboardContainer = document.getElementById('leaderboard-container');
+        if (leaderboardContainer) {
+            console.log('Showing leaderboard container');
+            leaderboardContainer.style.display = 'block';
+            
+            // Ensure the table is populated
+            if (!leaderboardContainer.querySelector('tbody tr')) {
+                console.log('Loading initial data');
+                this.loadLeaderboardData();
+            }
+        } else {
+            console.error('Leaderboard container not found, creating it');
+            this.createLeaderboardUI();
+            this.loadLeaderboardData();
+        }
     }
+}
+
+// Initialize if we're on the leaderboard page
+if (window.location.pathname.includes('leaderboard.html')) {
+    new LeaderboardManager();
 }
