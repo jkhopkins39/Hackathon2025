@@ -1,5 +1,5 @@
-import { rewardsSystem, TIER_LEVELS, POINTS_CONFIG } from '../clone1/main.js';
-import { InstagramAuthManager } from '../clone1/instagramAuth.js';  
+import { rewardsSystem, TIER_LEVELS, POINTS_CONFIG } from '../Hackathon2025/main.js';
+import { InstagramAuthManager } from '../Hackathon2025/instagramAuth.js';  
 
 class UIController {
     constructor() {
