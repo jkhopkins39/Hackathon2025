@@ -133,3 +133,39 @@ const rewardsSystem = {
 };
 
 export { rewardsSystem, User, TIER_LEVELS, POINTS_CONFIG };
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Existing referral submission code
+    const referralInput = document.getElementById('referralInput');
+    const submitButton = document.getElementById('submitReferral');
+    const successMessage = document.getElementById('successMessage');
+
+    submitButton.addEventListener('click', () => {
+        const code = referralInput.value.trim();
+        if (code) {
+            localStorage.setItem('referralCode', code);
+            successMessage.style.display = 'block';
+            referralInput.value = '';
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+        }
+    });
+
+    // New copy-to-clipboard functionality
+    const copyButton = document.getElementById('copyButton');
+    const referralCode = document.getElementById('myReferralCode');
+
+    copyButton.addEventListener('click', async () => {
+        try {
+            await navigator.clipboard.writeText(referralCode.textContent);
+            const originalText = copyButton.textContent;
+            copyButton.textContent = 'Copied!';
+            setTimeout(() => {
+                copyButton.textContent = originalText;
+            }, 2000);
+        } catch (err) {
+            console.error('Failed to copy text: ', err);
+        }
+    });
+});

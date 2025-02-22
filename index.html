@@ -90,47 +90,29 @@
         </section>
 
         <!-- Rewards Progress Section -->
-        <section class="rewards-progress">
-            <h2>Your Rewards Journey</h2>
-            <div class="tiers-container">
-                <div class="tier-level white">
-                    <div class="tier-icon">⚪</div>
-                    <h3>White Fan</h3>
-                    <p>0 pts</p>
-                </div>
-                <div class="tier-level grey active">
-                    <div class="tier-icon">🔘</div>
-                    <h3>Grey Fan</h3>
-                    <p>1,000 pts</p>
-                </div>
-                <div class="tier-level black">
-                    <div class="tier-icon">⬛</div>
-                    <h3>Black Fan</h3>
-                    <p>2,500 pts</p>
-                </div>
-                <div class="tier-level gold">
-                    <div class="tier-icon">🟨</div>
-                    <h3>Gold Fan</h3>
-                    <p>5,000 pts</p>
-                </div>
-            </div>
-        </section>
 
         <!-- Referral Section -->
         <section class="referral-section">
-            <h2>Refer Friends</h2>
-            <div class="referral-card">
-                <h3>Earn 800 points for each friend!</h3>
-                <p>Share your referral code:</p>
-                <div class="referral-code">KSU2024-ABC123</div>
-                <button class="share-btn">Share Code</button>
-            </div>
-            <div class="referral-section">
-                <div class="referral-code-container">
-                    <span class="referral-code">YOUR_CODE_HERE</span>
-                    <button class="share-btn">Copy Code</button>
+            <div class="referral-container">
+                <div class="referral-card">
+                    <h3>Earn 800 points for each friend!</h3>
+                    <p>Share your referral code:</p>
+                    <div class="referral-code-container">
+                        <span class="referral-code" id="myReferralCode">ABC123</span>
+                        <button id="copyButton" class="share-btn">Copy Code</button>
+                    </div>
                 </div>
-                <!-- QR code will be inserted here by JavaScript -->
+                
+                <div class="referral-card">
+                    <h3>Got a referral code?</h3>
+                    <div class="referral-form">
+                        <input type="text" id="referralInput" placeholder="Enter referral code" class="referral-input">
+                        <button id="submitReferral" class="share-btn">Submit Code</button>
+                    </div>
+                    <p id="successMessage" class="success-message" style="display: none; color: green; margin-top: 10px;">
+                        Referral code successfully saved!
+                    </p>
+                </div>
             </div>
         </section>
     </main>

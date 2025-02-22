@@ -58,15 +58,15 @@ export class LeaderboardManager {
                     profilePic: 'https://via.placeholder.com/40',
                     seasonPoints: 1000,
                     currentStreak: 5,
-                    longestStreak: 10
+                    longestStreak: 6
                 },
                 {
                     id: '2',
                     username: 'TestUser2',
                     profilePic: 'https://via.placeholder.com/40',
                     seasonPoints: 800,
-                    currentStreak: 3,
-                    longestStreak: 8
+                    currentStreak: 11,
+                    longestStreak: 11
                 }
             ];
             

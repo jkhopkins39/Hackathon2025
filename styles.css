@@ -148,31 +148,41 @@ nav a.active {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.referral-section {
+.referral-container {
     display: flex;
-    align-items: center;
     gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.referral-card, .qr-code-container {
+    flex: 0 1 350px;
     padding: 20px;
-    background: #1a1a1a;
-    border-radius: 12px;
-    margin: 20px 0;
+    text-align: center;
+    background: #242424;  /* Updated to specified color */
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: white;
 }
 
 .referral-code-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 10px;
-    background: white;
-    padding: 12px 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin: 15px 0;
 }
 
 .referral-code {
-    font-size: 1.2em;
-    font-weight: 600;
-    color: #333;
-    letter-spacing: 1px;
+    display: inline-block;
+    padding: 8px 15px;
+    background: white;
+    color: black;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    min-width: 100px;
+    max-width: 200px;
 }
 
 .share-btn {
@@ -447,36 +457,104 @@ main {
 }
 
 /* Referral Section */
+.referral-section {
+    width: 100%;
+    padding: 20px 0;  /* Removed side padding completely */
+    display: flex;
+    justify-content: center;
+}
+
+.referral-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 0 10px;  /* Minimal padding */
+}
+
 .referral-card {
-    background: var(--background-card);
-    padding: 2rem;
-    border-radius: 10px;
+    flex: 0 1 400px;  /* Increased base width */
+    padding: 20px;
     text-align: center;
+    background: #242424;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+.referral-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.referral-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.referral-input {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    background: white;
+    color: black;  /* Keeping input text dark */
+}
+
+.referral-code-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
 }
 
 .referral-code {
-    background: var(--accent-dark);
-    padding: 1rem;
+    display: inline-block;
+    padding: 8px 15px;
+    background: white;
+    color: black;
     border-radius: 5px;
-    margin: 1rem 0;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    min-width: 100px;
+    max-width: 200px;
 }
 
 .share-btn {
-    background: var(--primary-color);
-    color: var(--background-dark);
-    border: none;
-    padding: 0.8rem 2rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: transform 0.2s ease;
+    min-width: 120px;
+    padding: 10px 20px;
 }
 
-.share-btn:hover {
-    transform: translateY(-2px);
+.success-message {
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+/* Make sure QR code is centered */
+.qr-code-container img {
+    margin: 0 auto;
+    display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 968px) {
+    .referral-section {
+        padding: 20px;
+    }
+    
+    .referral-container {
+        flex-direction: column;
+    }
+    
+    .referral-card {
+        width: 100%;
+    }
 }
 
 /* Section Headers */
@@ -1047,38 +1125,4 @@ nav .profile-btn:hover {
     background-color: #FFD700;  /* Yellow color */
     color: black;
     cursor: pointer;
-}
-
-@media screen and (max-width: 768px) {
-    .hero-section {
-        padding: 1rem;
-    }
-
-    .movie-grid {
-        grid-template-columns: 1fr;  /* Single column for mobile */
-        gap: 1rem;
-        padding: 0 1rem;
-    }
-
-    .movie-card {
-        width: 100%;  /* Full width cards on mobile */
-        margin: 0 auto;
-    }
-
-    .movie-card img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-    }
-}
-
-/* iPhone SE and smaller devices */
-@media screen and (max-width: 375px) {
-    .container {
-        padding: 0.5rem;
-    }
-    
-    h1 {
-        font-size: 1.5rem;
-    }
 }
