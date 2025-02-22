@@ -78,7 +78,7 @@ class AuthManager {
             await this.createUserSession(userData);
 
             // Redirect to dashboard
-            window.location.href = '/dashboard.html';
+            window.location.href = '/rewards.html';
 
         } catch (error) {
             console.error('Signup error:', error);
