@@ -12,6 +12,72 @@
     --progress-bg: #333333;
 }
 
+.qr-code-container {
+    display: inline-block;
+    margin-left: 20px;
+    vertical-align: middle;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.referral-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: #1a1a1a;
+    border-radius: 12px;
+    margin: 20px 0;
+}
+
+.referral-code-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.referral-code {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #333;
+    letter-spacing: 1px;
+}
+
+.share-btn {
+    padding: 8px 16px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.share-btn:hover {
+    background: #0056b3;
+}
+
+.qr-code-container {
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.qr-code-label {
+    display: block;
+    text-align: center;
+    margin-top: 8px;
+    font-size: 0.9em;
+    color: #666;
+}
+
 * {
     margin: 0;
     padding: 0;

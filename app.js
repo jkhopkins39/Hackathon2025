@@ -4,12 +4,81 @@ import { InstagramAuthManager } from '../Hackathon2025/instagramAuth.js';
 class UIController {
     constructor() {
         // Initialize current user (in real app, this would come from authentication)
+        this.initializeQRCode();
         this.currentUser = rewardsSystem.createUser('12345', 'Demo User', 'demo@kennesaw.edu');
         this.initializeEventListeners();
         this.updateUI();
         this.instagramAuth = new InstagramAuthManager();
     }
 
+    initializeQRCode() {
+        const referralSection = document.querySelector('.referral-section');
+        if (!referralSection) {
+            console.error('Referral section not found');
+            return;
+        }
+        
+        // Create QR container
+        const qrContainer = document.createElement('div');
+        qrContainer.id = 'qr-code';
+        qrContainer.className = 'qr-code-container';
+        
+        // Create canvas for QR code
+        const canvas = document.createElement('canvas');
+        qrContainer.appendChild(canvas);
+        
+        // Add label under QR code
+        const label = document.createElement('span');
+        label.className = 'qr-code-label';
+        label.textContent = 'Scan for Event Check-in';
+        qrContainer.appendChild(label);
+        
+        referralSection.appendChild(qrContainer);
+        this.generateQRCode();
+    }
+
+    generateQRCode() {
+        // Add debug logs
+        console.log('Generating QR code...');
+        
+        const referralCode = document.querySelector('.referral-code').textContent;
+        console.log('Referral code:', referralCode);
+        
+        const qrData = JSON.stringify({
+            referralCode: referralCode,
+            timestamp: Date.now()
+        });
+        console.log('QR data:', qrData);
+
+        try {
+            const canvas = document.querySelector('#qr-code canvas');
+            QRCode.toCanvas(canvas, qrData, {
+                width: 128,
+                height: 128,
+                margin: 2,
+                color: {
+                    dark: '#000000',  // Black dots
+                    light: '#ffffff'   // White background
+                }
+            });
+            console.log('QR code generated successfully');
+        } catch (error) {
+            console.error('Error generating QR code:', error);
+        }
+    }
+
+    async handleShareReferral() {
+        const referralCode = document.querySelector('.referral-code').textContent;
+        try {
+            await navigator.clipboard.writeText(referralCode);
+            alert('Referral code copied to clipboard!');
+            this.generateQRCode();
+        } catch (err) {
+            console.error('Failed to copy referral code:', err);
+            alert('Please manually copy the referral code');
+        }
+    }
+    
     initializeEventListeners() {
         // Check-in button listeners
         document.querySelectorAll('.check-in-btn').forEach(button => {
