@@ -4,7 +4,6 @@ export function createNavBar() {
     nav.innerHTML = `
         <div class="nav-container">
             <div class="nav-left">
-                <img src="./assets/ksu-logo.png" alt="KSU Logo" class="nav-logo-img">
                 <h1 class="nav-title">KSU Fan Rewards</h1>
             </div>
             
@@ -23,20 +22,10 @@ export function createNavBar() {
                     <span class="points-value">1,234</span>
                     <span class="points-label">points</span>
                 </div>
-                <a href="#profile" class="profile-link">
-                    <img src="./assets/default-profile.png" alt="Profile" class="profile-img" 
-                         onerror="this.src='https://via.placeholder.com/40';">
-                </a>
+                <a href="#profile" class="profile-link">Profile</a>
             </div>
         </div>
     `;
-
-    // Add error handling for logo image
-    const logo = nav.querySelector('.nav-logo-img');
-    logo.onerror = function() {
-        this.src = '';
-        console.log('Logo image failed to load, using placeholder');
-    };
 
     return nav;
 }
