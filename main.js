@@ -1,9 +1,9 @@
 // User Tier Configuration
 const TIER_LEVELS = {
     WHITE: { name: 'White Fan', minPoints: 0, multiplier: 1 },
-    GREY: { name: 'Grey Fan', minPoints: 7500, multiplier: 1.1 },
-    BLACK: { name: 'Black Fan', minPoints: 25000, multiplier: 1.2 },
-    GOLD: { name: 'Gold Fan', minPoints: 50000, multiplier: 1.3 }
+    GREY: { name: 'Grey Fan', minPoints: 1000, multiplier: 1.1 },
+    BLACK: { name: 'Black Fan', minPoints: 2500, multiplier: 1.2 },
+    GOLD: { name: 'Gold Fan', minPoints: 5000, multiplier: 1.3 }
 };
 
 // Point System Configuration

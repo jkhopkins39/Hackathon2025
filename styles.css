@@ -819,3 +819,152 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+/* Navigation Bar Styles */
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #1a1a1a;
+    padding: 0.5rem 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    z-index: 1000;
+    height: 60px;
+}
+
+.nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 2rem;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    min-width: 300px;
+}
+
+.nav-logo-img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-title {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.nav-center {
+    flex-grow: 0;
+    display: flex;
+    justify-content: center;
+    margin: 0 20px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    min-width: 250px;
+    justify-content: flex-end;
+}
+
+.points-display {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #2d2d2d;
+    padding: 0.75rem 1.5rem;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.points-icon {
+    font-size: 1.2rem;
+}
+
+.points-value {
+    color: #ffd700;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.points-label {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.profile-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.profile-img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #2d2d2d;
+    transition: border-color 0.2s;
+    cursor: pointer;
+}
+
+.profile-img:hover {
+    border-color: #007bff;
+}
+
+/* Adjust main content to account for fixed nav */
+main {
+    margin-top: 60px;
+    padding: 20px 40px;
+}
+
+/* Media query for larger screens */
+@media (min-width: 1440px) {
+    .nav-container {
+        padding: 0 4rem;
+    }
+    
+    .nav-links {
+        gap: 3rem;
+    }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 1024px) {
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
+    .nav-links {
+        gap: 1rem;
+    }
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
