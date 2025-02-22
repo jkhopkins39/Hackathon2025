@@ -8,16 +8,65 @@ export class LeaderboardManager {
         console.log('LeaderboardManager initializing...');
         this.currentSort = 'points';
         this.showFriendsOnly = false;
-        this.currentUserId = null;
-        
-        // Only initialize if we're on the leaderboard page
-        if (window.location.pathname.includes('leaderboard.html')) {
-            this.initializeLeaderboard();
-        }
+        this.currentUserId = null; // Will be set when user logs in
+        this.initializeLeaderboard();
     }
 
-    initializeLeaderboard() {
-        console.log('Loading leaderboard data...');
+    async initializeLeaderboard() {
+        // Add tab to navigation
+        this.addLeaderboardTab();
+        // Create leaderboard container
+        this.createLeaderboardUI();
+        // Initial data load
+        await this.loadLeaderboardData();
+    } 
+
+    addLeaderboardTab() {
+        const nav = document.querySelector('nav ul');
+        const tab = document.createElement('li');
+        tab.innerHTML = '<a href="#leaderboard">Leaderboard</a>';
+        tab.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.showLeaderboard();
+        });
+        nav.appendChild(tab);
+    }
+
+    createLeaderboardUI() {
+        const container = document.createElement('div');
+        container.id = 'leaderboard-container';
+        container.style.display = 'none';
+        
+        container.innerHTML = `
+            <div class="leaderboard-controls">
+                <div class="sort-controls">
+                    <button class="sort-btn active" data-sort="points">Sort by Points</button>
+                    <button class="sort-btn" data-sort="streak">Sort by Streak</button>
+                </div>
+                <div class="filter-controls">
+                    <button class="filter-btn" id="friends-filter">Show Friends Only</button>
+                    <button class="find-me-btn">Find Me</button>
+                </div>
+            </div>
+            <div class="leaderboard-table-container">
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Profile</th>
+                            <th>Username</th>
+                            <th>Season Points</th>
+                            <th>Current Streak</th>
+                            <th>Longest Streak</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        `;
+
+        document.querySelector('main').appendChild(container);
         this.attachEventListeners();
         this.loadLeaderboardData();
     }
