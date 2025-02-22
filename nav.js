@@ -34,7 +34,7 @@ export function createNavBar() {
     // Add error handling for logo image
     const logo = nav.querySelector('.nav-logo-img');
     logo.onerror = function() {
-        this.src = 'https://via.placeholder.com/40';
+        this.src = '';
         console.log('Logo image failed to load, using placeholder');
     };
 
