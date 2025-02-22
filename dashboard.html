@@ -3,25 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snack Rewards Screen</title>
+    <title>KSU Sports Rewards Program</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            background-color: #fff;
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
         .snack-option {
             display: flex;
             align-items: center;
@@ -35,7 +19,7 @@
         }
         .snack-name {
             margin-left: 10px;
-            color: #333;
+            color: var(--text-primary);
         }
         .price {
             font-weight: bold;
@@ -45,6 +29,20 @@
     </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <div class="logo">KSU Rewards</div>
+            <div class="nav-links">
+                <a href="index.html">Dashboard</a>
+                <a href="#games">Games</a>
+                <a href="dashboard.html">Rewards</a>
+            </div>
+            <div class="user-info">
+                <span class="points">2,500 pts</span>
+                <img src="profile-placeholder.jpg" alt="Profile" class="profile-pic">
+            </div>
+        </nav>
+    </header>
     <div class="container">
         <h1>Snack Rewards Screen</h1>
         <div class="snack-option">
