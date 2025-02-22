@@ -22,7 +22,7 @@ export function createNavBar() {
                     <span class="points-value">1,234</span>
                     <span class="points-label">points</span>
                 </div>
-                <a href="#profile" class="profile-link">Profile</a>
+                <a href="#profile" class="profile-btn">Profile</a>
             </div>
         </div>
     `;

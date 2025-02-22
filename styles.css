@@ -13,8 +13,15 @@
 }
 
 nav {
-    background: #1a1a1a;
-    padding: 15px 0;
+    background-color: black;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    margin-bottom: 2rem;
 }
 
 nav ul {
@@ -213,15 +220,9 @@ body {
 header {
     background-color: var(--background-card);
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-nav {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .logo {
@@ -419,6 +420,7 @@ main {
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
     margin-top: 1rem;
+    margin-bottom: 3rem;
 }
 
 .tier-level {
@@ -427,6 +429,7 @@ main {
     border-radius: 10px;
     text-align: center;
     transition: transform 0.2s ease;
+    margin-bottom: 0;
 }
 
 .tier-level.active {
@@ -827,26 +830,27 @@ footer {
     left: 0;
     right: 0;
     background: #1a1a1a;
-    padding: 0.5rem 2rem;
+    padding: 0;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     z-index: 1000;
     height: 60px;
+    width: 100vw; /* Full viewport width */
 }
 
 .nav-container {
-    width: 100%;
+    width: 100vw; /* Full viewport width */
     display: flex;
-    justify-content: space-between;
     align-items: center;
     height: 100%;
-    padding: 0 2rem;
+    padding: 0;
+    margin: 0;
 }
 
 .nav-left {
     display: flex;
     align-items: center;
     gap: 2rem;
-    min-width: 300px;
+    padding-left: 2rem;
 }
 
 .nav-logo-img {
@@ -864,18 +868,17 @@ footer {
 }
 
 .nav-center {
-    flex-grow: 0;
     display: flex;
-    justify-content: center;
-    margin: 0 20px;
+    justify-content: flex-start;
+    padding-left: 2rem;
 }
 
 .nav-right {
     display: flex;
     align-items: center;
     gap: 2rem;
-    min-width: 250px;
-    justify-content: flex-end;
+    margin-left: auto;
+    padding-right: 2rem;
 }
 
 .points-display {
@@ -886,6 +889,7 @@ footer {
     padding: 0.75rem 1.5rem;
     border-radius: 20px;
     white-space: nowrap;
+    margin-right: 1rem;
 }
 
 .points-icon {
@@ -907,6 +911,10 @@ footer {
     display: flex;
     align-items: center;
     text-decoration: none;
+}
+
+.profile-link a:hover {
+    color: var(--primary-color);
 }
 
 .profile-img {
@@ -957,7 +965,6 @@ main {
     margin: 0;
     padding: 0;
     gap: 0.5rem;
-    justify-content: center;
 }
 
 .nav-link {
@@ -967,4 +974,111 @@ main {
     border-radius: 4px;
     transition: background-color 0.2s;
     white-space: nowrap;
+}
+
+.nav-link.active {
+    background: #FFD700; /* Yellow */
+    color: #000000; /* Black text */
+}
+
+.nav-link:hover {
+    background: #FFE44D; /* Lighter yellow for hover */
+    color: #000000;
+}
+
+.rewards-container {
+    margin-top: 2rem;  /* Add space above the rewards section */
+}
+
+.tier-container {
+    margin-top: 2rem;  /* Add significant space above the reward tiers */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.tier-section {
+    margin-top: 3rem;  /* Add significant space above each tier section */
+}
+
+.tier-title {
+    margin-bottom: 1.5rem;  /* Add space between tier title and its rewards */
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.rewards-page {
+    margin-top: 3rem;
+}
+
+.tier {
+    margin-top: 2rem;
+}
+
+.tier-heading {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.rewards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.container {
+    margin-top: 5rem;  /* Increased from 4rem for more headspace */
+}
+
+.rewards-progress {
+    margin-top: 2rem;  /* Add consistent spacing between tier title and its rewards */
+}
+
+.profile-button:hover {
+    background-color: #FFD700;  /* Yellow color to match other buttons */
+    color: black;
+}
+
+nav .profile-btn:hover {
+    background-color: #FFD700;  /* Yellow color */
+    color: black;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .hero-section {
+        padding: 1rem;
+    }
+
+    .movie-grid {
+        grid-template-columns: 1fr;  /* Single column for mobile */
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .movie-card {
+        width: 100%;  /* Full width cards on mobile */
+        margin: 0 auto;
+    }
+
+    .movie-card img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+}
+
+/* iPhone SE and smaller devices */
+@media screen and (max-width: 375px) {
+    .container {
+        padding: 0.5rem;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
 }
