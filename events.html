@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSU Fan Rewards - Events</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <img src="ksu-logo.png" alt="KSU Logo" class="logo">
+            <h1>KSU Fan Rewards</h1>
+        </div>
+        <div class="nav-center">
+            <a href="index.html">Home</a>
+            <a href="events.html" class="active">Events</a>
+            <a href="rewards.html">Rewards</a>
+        </div>
+        <div class="nav-right">
+            <span class="points">2,500 pts</span>
+            <img src="profile-pic.jpg" alt="Profile" class="profile-pic">
+        </div>
+    </nav>
+
+    <main class="events-container">
+        <div class="events-header">
+            <h2>Upcoming Events</h2>
+            <div class="filters">
+                <select id="sportFilter" onchange="filterEvents()">
+                    <option value="all">All Sports</option>
+                    <option value="basketball">Basketball</option>
+                    <option value="baseball">Baseball</option>
+                    <option value="volleyball">Volleyball</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="events-grid" id="eventsGrid">
+            <!-- Event cards will be populated here -->
+        </div>
+    </main>
+
+    <script>
+        // Mock data for events
+        const events = [
+            {
+                sport: 'basketball',
+                homeTeam: 'KSU Owls',
+                awayTeam: 'Georgia Tech',
+                date: 'March 20, 2024',
+                time: '7:00 PM',
+                location: 'KSU Convocation Center',
+                basePoints: 250,
+                bonusPoints: 100,
+                image: 'basketball-game.jpg'
+            },
+            {
+                sport: 'baseball',
+                homeTeam: 'KSU Owls',
+                awayTeam: 'UGA Bulldogs',
+                date: 'March 23, 2024',
+                time: '2:00 PM',
+                location: 'Stillwell Stadium',
+                basePoints: 200,
+                bonusPoints: 50,
+                image: 'baseball-game.jpg'
+            },
+            {
+                sport: 'volleyball',
+                homeTeam: 'KSU Owls',
+                awayTeam: 'Mercer Bears',
+                date: 'March 25, 2024',
+                time: '6:30 PM',
+                location: 'Carmichael Student Center',
+                basePoints: 150,
+                image: 'volleyball-game.jpg'
+            }
+        ];
+
+        // Function to create event cards
+        function createEventCard(event) {
+            return `
+                <div class="event-card ${event.sport}">
+                    <div class="event-image">
+                        <img src="${event.image}" alt="${event.sport} event">
+                        <span class="event-tag">${event.sport}</span>
+                    </div>
+                    <div class="event-info">
+                        <div class="event-teams">
+                            <h3>${event.homeTeam} vs ${event.awayTeam}</h3>
+                        </div>
+                        <div class="event-datetime">
+                            <i class="far fa-calendar"></i> ${event.date}
+                            <i class="far fa-clock"></i> ${event.time}
+                        </div>
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i> ${event.location}
+                        </div>
+                        <div class="points-info">
+                            <span class="base-points">
+                                <i class="fas fa-star"></i> ${event.basePoints} pts
+                            </span>
+                            ${event.bonusPoints ? `
+                                <span class="bonus-points">
+                                    <i class="fas fa-fire"></i> +${event.bonusPoints} bonus
+                                </span>
+                            ` : ''}
+                        </div>
+                        <button class="rsvp-btn" onclick="handleRSVP('${event.homeTeam} vs ${event.awayTeam}')">
+                            RSVP for Event
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to handle RSVP
+        function handleRSVP(eventTitle) {
+            alert(`RSVP successful for ${eventTitle}! Check your email for confirmation.`);
+        }
+
+        // Function to filter events
+        function filterEvents() {
+            const sport = document.getElementById('sportFilter').value;
+            const eventsGrid = document.getElementById('eventsGrid');
+            
+            const filteredEvents = sport === 'all' 
+                ? events 
+                : events.filter(event => event.sport === sport);
+            
+            eventsGrid.innerHTML = filteredEvents.map(event => createEventCard(event)).join('');
+        }
+
+        // Initial load of events
+        window.onload = filterEvents;
+    </script>
+</body>
+</html> 
