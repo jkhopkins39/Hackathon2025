@@ -1,0 +1,450 @@
+:root {
+    --primary-color: #febc11; /* KSU Gold */
+    --background-dark: #1a1a1a; /* Dark background */
+    --background-card: #242424; /* Slightly lighter for cards */
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --accent-dark: #2d2d2d;
+    --white-tier: #cccccc;
+    --grey-tier: #808080;
+    --black-tier: #333333;
+    --gold-tier: #febc11;
+    --progress-bg: #333333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: var(--background-dark);
+    color: var(--text-primary);
+}
+
+/* Header Styles */
+header {
+    background-color: var(--background-card);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.nav-links a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.points {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Main Content Styles */
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* User Status Section */
+.user-status {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.tier-card, .streak-card {
+    background: var(--background-card);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.tier-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    background: var(--accent-dark);
+    color: var(--primary-color);
+}
+
+.progress-container {
+    background: var(--progress-bg);
+    border-radius: 10px;
+    height: 8px;
+    position: relative;
+    margin-top: 1rem;
+}
+
+.progress-container span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    display: block;
+}
+
+.progress-bar {
+    background: var(--primary-color);
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+/* Games Section */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.game-card {
+    background: var(--background-card);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.game-date {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.game-details h3 {
+    color: var(--text-primary);
+    margin: 0.5rem 0;
+}
+
+.game-details p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.check-in-btn {
+    background: var(--primary-color);
+    color: var(--background-dark);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s ease;
+}
+
+.check-in-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Tiers Section */
+.tiers-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.tier-level {
+    background: var(--background-card);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.tier-level.active {
+    border: 2px solid var(--primary-color);
+    transform: scale(1.02);
+}
+
+.tier-level h3 {
+    margin: 0.5rem 0;
+    color: var(--text-primary);
+}
+
+.tier-level p {
+    color: var(--text-secondary);
+}
+
+/* Referral Section */
+.referral-card {
+    background: var(--background-card);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.referral-code {
+    background: var(--accent-dark);
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.share-btn {
+    background: var(--primary-color);
+    color: var(--background-dark);
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s ease;
+}
+
+.share-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Section Headers */
+h2 {
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+/* Footer */
+footer {
+    background: var(--background-card);
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+/* Streak Card Specific */
+.streak-count {
+    font-size: 3rem;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+.multiplier {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+/* Points Info */
+.points-info {
+    margin: 0.5rem 0;
+}
+
+.base-points {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.bonus {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .user-status {
+        grid-template-columns: 1fr;
+    }
+
+    .tiers-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: var(--background-card);
+    margin: 5% auto;
+    padding: 2rem;
+    width: 90%;
+    max-width: 1200px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    right: 1.5rem;
+    top: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+.close-modal:hover {
+    color: var(--primary-color);
+}
+
+/* Players Grid */
+.players-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.player-card {
+    background: var(--accent-dark);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.player-card:hover {
+    transform: translateY(-5px);
+}
+
+.player-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    object-fit: cover;
+}
+
+.player-card h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.player-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.social-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: opacity 0.2s ease;
+}
+
+.social-btn:hover {
+    opacity: 0.8;
+}
+
+.twitter {
+    background: #1DA1F2;
+    color: white;
+}
+
+.instagram {
+    background: #E1306C;
+    color: white;
+}
+
+/* Follow Button */
+.follow-btn {
+    background: var(--primary-color);
+    color: var(--background-dark);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.2s ease;
+}
+
+.follow-btn:hover {
+    transform: translateY(-2px);
+}
+
+.follow-btn.followed {
+    background: var(--accent-dark);
+    color: var(--text-secondary);
+    cursor: default;
+}
+
+.follow-points {
+    color: var(--background-dark);
+    font-size: 0.9rem;
+}
+
+.view-players-btn {
+    background: var(--accent-dark);
+    color: var(--text-primary);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+.view-players-btn:hover {
+    background: var(--primary-color);
+    color: var(--background-dark);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .modal-content {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+
+    .players-grid {
+        grid-template-columns: 1fr;
+    }
+}
