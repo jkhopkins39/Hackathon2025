@@ -24,117 +24,114 @@
         </div>
     </nav>
 
-    <main class="events-container">
-        <div class="events-header">
+    <div class="dashboard-container">
+        <div class="events-section">
             <h2>Upcoming Events</h2>
-            <div class="filters">
-                <select id="sportFilter" onchange="filterEvents()">
-                    <option value="all">All Sports</option>
-                    <option value="basketball">Basketball</option>
-                    <option value="baseball">Baseball</option>
-                    <option value="volleyball">Volleyball</option>
-                </select>
+            
+            <div class="points-multiplier-info">
+                <i class="fas fa-users"></i>
+                <span>Invite friends and earn 2x points for each event!</span>
+            </div>
+
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-type">Basketball</div>
+                    <h3>KSU Owls vs Georgia Tech</h3>
+                    <div class="event-basic-info">
+                        <p>March 20, 2024 • 7:00 PM</p>
+                        <p>KSU Convocation Center</p>
+                    </div>
+                    <div class="points-breakdown">
+                        <div class="points-item">
+                            <span class="points-label">Base Points</span>
+                            <span class="points-value">250 pts</span>
+                        </div>
+                        <div class="points-item bonus">
+                            <span class="points-label">Friend Bonus</span>
+                            <span class="points-value">+250 pts</span>
+                        </div>
+                    </div>
+                    <button class="rsvp-btn" onclick="handleRSVP('Basketball')">RSVP Now</button>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-type">Baseball</div>
+                    <h3>KSU Owls vs UGA Bulldogs</h3>
+                    <div class="event-basic-info">
+                        <p>March 23, 2024 • 2:00 PM</p>
+                        <p>Stillwell Stadium</p>
+                    </div>
+                    <div class="points-breakdown">
+                        <div class="points-item">
+                            <span class="points-label">Base Points</span>
+                            <span class="points-value">200 pts</span>
+                        </div>
+                        <div class="points-item bonus">
+                            <span class="points-label">Friend Bonus</span>
+                            <span class="points-value">+200 pts</span>
+                        </div>
+                    </div>
+                    <button class="rsvp-btn" onclick="handleRSVP('Baseball')">RSVP Now</button>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-type">Volleyball</div>
+                    <h3>KSU Owls vs Mercer Bears</h3>
+                    <div class="event-basic-info">
+                        <p>March 25, 2024 • 6:30 PM</p>
+                        <p>Carmichael Student Center</p>
+                    </div>
+                    <div class="points-breakdown">
+                        <div class="points-item">
+                            <span class="points-label">Base Points</span>
+                            <span class="points-value">150 pts</span>
+                        </div>
+                        <div class="points-item bonus">
+                            <span class="points-label">Friend Bonus</span>
+                            <span class="points-value">+150 pts</span>
+                        </div>
+                    </div>
+                    <button class="rsvp-btn" onclick="handleRSVP('Volleyball')">RSVP Now</button>
+                </div>
             </div>
         </div>
-
-        <div class="events-grid" id="eventsGrid">
-            <!-- Event cards will be populated here -->
-        </div>
-    </main>
+    </div>
 
     <script>
-        // Mock data for events
-        const events = [
-            {
-                sport: 'basketball',
-                homeTeam: 'KSU Owls',
-                awayTeam: 'Georgia Tech',
-                date: 'March 20, 2024',
-                time: '7:00 PM',
-                location: 'KSU Convocation Center',
-                basePoints: 250,
-                bonusPoints: 100,
-                image: 'basketball-game.jpg'
-            },
-            {
-                sport: 'baseball',
-                homeTeam: 'KSU Owls',
-                awayTeam: 'UGA Bulldogs',
-                date: 'March 23, 2024',
-                time: '2:00 PM',
-                location: 'Stillwell Stadium',
-                basePoints: 200,
-                bonusPoints: 50,
-                image: 'baseball-game.jpg'
-            },
-            {
-                sport: 'volleyball',
-                homeTeam: 'KSU Owls',
-                awayTeam: 'Mercer Bears',
-                date: 'March 25, 2024',
-                time: '6:30 PM',
-                location: 'Carmichael Student Center',
-                basePoints: 150,
-                image: 'volleyball-game.jpg'
-            }
-        ];
+        function handleRSVP(eventType) {
+            alert(`RSVP successful! Don't forget to invite friends to earn 2x points at the ${eventType} game!`);
+        }
 
-        // Function to create event cards
-        function createEventCard(event) {
-            return `
-                <div class="event-card ${event.sport}">
-                    <div class="event-image">
-                        <img src="${event.image}" alt="${event.sport} event">
-                        <span class="event-tag">${event.sport}</span>
+        async function loadKSUEvents() {
+    const events = await fetchKSUEvents();
+    const eventsGrid = document.querySelector('.events-grid');
+    eventsGrid.innerHTML = ''; // Clear existing events
+
+    events.forEach(event => {
+        const eventCard = `
+            <div class="event-card">
+                <div class="event-type">${event.sport}</div>
+                <h3>${event.homeTeam} vs ${event.awayTeam}</h3>
+                <div class="event-basic-info">
+                    <p>${event.date} • ${event.time}</p>
+                    <p>${event.location}</p>
+                </div>
+                <div class="points-breakdown">
+                    <div class="points-item">
+                        <span class="points-label">Base Points</span>
+                        <span class="points-value">${event.basePoints} pts</span>
                     </div>
-                    <div class="event-info">
-                        <div class="event-teams">
-                            <h3>${event.homeTeam} vs ${event.awayTeam}</h3>
-                        </div>
-                        <div class="event-datetime">
-                            <i class="far fa-calendar"></i> ${event.date}
-                            <i class="far fa-clock"></i> ${event.time}
-                        </div>
-                        <div class="event-location">
-                            <i class="fas fa-map-marker-alt"></i> ${event.location}
-                        </div>
-                        <div class="points-info">
-                            <span class="base-points">
-                                <i class="fas fa-star"></i> ${event.basePoints} pts
-                            </span>
-                            ${event.bonusPoints ? `
-                                <span class="bonus-points">
-                                    <i class="fas fa-fire"></i> +${event.bonusPoints} bonus
-                                </span>
-                            ` : ''}
-                        </div>
-                        <button class="rsvp-btn" onclick="handleRSVP('${event.homeTeam} vs ${event.awayTeam}')">
-                            RSVP for Event
-                        </button>
+                    <div class="points-item bonus">
+                        <span class="points-label">Friend Bonus</span>
+                        <span class="points-value">+${event.basePoints} pts</span>
                     </div>
                 </div>
-            `;
-        }
-
-        // Function to handle RSVP
-        function handleRSVP(eventTitle) {
-            alert(`RSVP successful for ${eventTitle}! Check your email for confirmation.`);
-        }
-
-        // Function to filter events
-        function filterEvents() {
-            const sport = document.getElementById('sportFilter').value;
-            const eventsGrid = document.getElementById('eventsGrid');
-            
-            const filteredEvents = sport === 'all' 
-                ? events 
-                : events.filter(event => event.sport === sport);
-            
-            eventsGrid.innerHTML = filteredEvents.map(event => createEventCard(event)).join('');
-        }
-
-        // Initial load of events
-        window.onload = filterEvents;
+                <button class="rsvp-btn" onclick="handleRSVP('${event.sport}')">RSVP Now</button>
+            </div>
+        `;
+        eventsGrid.innerHTML += eventCard;
+    });
+}
     </script>
 </body>
 </html> 

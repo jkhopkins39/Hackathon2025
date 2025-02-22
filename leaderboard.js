@@ -13,7 +13,7 @@ export class LeaderboardManager {
         this.createLeaderboardUI();
         // Initial data load
         await this.loadLeaderboardData();
-    }
+    } 
 
     addLeaderboardTab() {
         const nav = document.querySelector('nav ul');
