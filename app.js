@@ -1,12 +1,17 @@
 import { rewardsSystem, TIER_LEVELS, POINTS_CONFIG } from '../Hackathon2025/main.js';
 import { InstagramAuthManager } from '../Hackathon2025/instagramAuth.js';  
+import { LeaderboardManager } from './leaderboard.js';
 
 class UIController {
     constructor() {
+        // Initialize leaderboard first
+        this.leaderboard = new LeaderboardManager();
+        
         // Initialize current user (in real app, this would come from authentication)
         this.initializeQRCode();
         this.currentUser = rewardsSystem.createUser('12345', 'Demo User', 'demo@kennesaw.edu');
         this.initializeEventListeners();
+        this.initializeNavigation();  // Make sure this is called
         this.updateUI();
         this.instagramAuth = new InstagramAuthManager();
     }
@@ -294,6 +299,40 @@ class UIController {
             console.error('Failed to verify follow:', error);
             button.textContent = 'Error - Try Again';
         }
+    }
+
+    initializeNavigation() {
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                console.log('Navigation clicked:', e.target.getAttribute('href')); // Debug log
+                
+                // Remove active class from all links
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                
+                // Add active class to clicked link
+                e.target.classList.add('active');
+                
+                // Show appropriate section
+                const section = e.target.getAttribute('href').substring(1);
+                if (section === 'leaderboard') {
+                    // Hide rewards container
+                    document.querySelector('.rewards-container').style.display = 'none';
+                    // Show leaderboard
+                    const leaderboardContainer = document.getElementById('leaderboard-container');
+                    if (leaderboardContainer) {
+                        leaderboardContainer.style.display = 'block';
+                    } else {
+                        console.error('Leaderboard container not found');
+                    }
+                } else if (section === 'rewards') {
+                    // Hide leaderboard
+                    document.getElementById('leaderboard-container').style.display = 'none';
+                    // Show rewards
+                    document.querySelector('.rewards-container').style.display = 'block';
+                }
+            });
+        });
     }
 }
 

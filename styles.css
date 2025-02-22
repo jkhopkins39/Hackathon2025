@@ -12,6 +12,125 @@
     --progress-bg: #333333;
 }
 
+nav {
+    background: #1a1a1a;
+    padding: 15px 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+nav a:hover {
+    background: #2d2d2d;
+}
+
+nav a.active {
+    background: #007bff;
+}
+
+/* Leaderboard Styles */
+#leaderboard-container {
+    padding: 20px;
+    background: #1a1a1a;
+    border-radius: 12px;
+    margin: 20px 0;
+}
+
+.leaderboard-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.sort-controls, .filter-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.sort-btn, .filter-btn, .find-me-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #2d2d2d;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sort-btn:hover, .filter-btn:hover, .find-me-btn:hover {
+    background: #3d3d3d;
+}
+
+.sort-btn.active {
+    background: #007bff;
+}
+
+.leaderboard-table-container {
+    overflow-x: auto;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #2d2d2d;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.leaderboard-table th,
+.leaderboard-table td {
+    padding: 12px;
+    text-align: left;
+    color: white;
+}
+
+.leaderboard-table th {
+    background: #1a1a1a;
+    font-weight: 600;
+}
+
+.leaderboard-table tr {
+    border-bottom: 1px solid #3d3d3d;
+}
+
+.leaderboard-table tr:last-child {
+    border-bottom: none;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.current-user {
+    background: rgba(0, 123, 255, 0.1);
+}
+
+.highlight {
+    animation: highlight 2s ease-in-out;
+}
+
+@keyframes highlight {
+    0%, 100% { background: rgba(0, 123, 255, 0.1); }
+    50% { background: rgba(0, 123, 255, 0.3); }
+}
+
 .qr-code-container {
     display: inline-block;
     margin-left: 20px;
