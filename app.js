@@ -1,7 +1,7 @@
-import { rewardsSystem, TIER_LEVELS, POINTS_CONFIG } from '../Hackathon2025/main.js';
-import { InstagramAuthManager } from '../Hackathon2025/instagramAuth.js';  
-import { LeaderboardManager } from './leaderboard.js';
-import { createNavBar } from './nav.js';
+import { rewardsSystem, TIER_LEVELS, POINTS_CONFIG } from '/main.js';
+import { InstagramAuthManager } from "/instagramAuth.js";  
+import { LeaderboardManager } from "/leaderboard.js";
+import { createNavBar } from '/nav.js';
 
 class UIController {
     constructor() {
